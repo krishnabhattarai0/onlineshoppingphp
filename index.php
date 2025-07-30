@@ -30,7 +30,7 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
 </head>
 <body>
 
-<!-- Navbar creation -->
+<!-- Navbar creation  is done-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   <a class="navbar-brand fw-bold" href="index.php">🛒 Bazzar</a>
