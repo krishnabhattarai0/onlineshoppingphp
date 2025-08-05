@@ -66,7 +66,7 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
   </div>
 </nav>
 
-<!-- Content -->
+<!-- Contents -->
 <div class="container mt-4">
   <h2 class="text-center mb-4">🛒 Welcome to Bazzar</h2>
 
