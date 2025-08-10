@@ -21,19 +21,30 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
   <title>Bazzar - Online Shopping</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    .product-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     .product-card img {
-      height: 250px;
+      height: 90%;
+      max-height: 250px;
       object-fit: cover;
       width: 100%;
+    }
+    .product-info {
+      background-color: rgb(243, 230, 230);
+      padding: 10px;
     }
   </style>
 </head>
 <body>
 
-<!-- Navbar creation  is done-->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-  <a class="navbar-brand fw-bold" href="index.php">🛒 Bazzar</a>
+    <a class="navbar-brand fw-bold" href="index.php">🛒 Bazzar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -85,14 +96,14 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
   </form>
 
   <!-- Products -->
-  <div class="row">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
     <?php if ($products->num_rows > 0): ?>
       <?php while ($row = $products->fetch_assoc()): ?>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm text-center product-card">
+        <div class="col">
+          <div class="card shadow-sm text-center product-card">
             <img src="<?php echo $row['image']; ?>" alt="Product Image">
-            <div class="p-3" style="background-color:rgb(243, 230, 230);">
-              <h3 class="card-title mb-1"><?php echo ucfirst($row['name']); ?></h3>
+            <div class="product-info">
+              <h5 class="card-title mb-1"><?php echo ucfirst($row['name']); ?></h5>
               <p class="mb-1 text-danger fw-bold">
                 Rs. <?php echo $row['price']; ?>
                 <span class="text-muted text-decoration-line-through small">
@@ -100,7 +111,6 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
                 </span>
                 <span class="badge bg-success ms-2">15% OFF</span>
               </p>
-              <!-- <p class="text-muted small mb-2"><?php echo ucfirst($row['category']); ?></p> -->
               <a href="add_to_cart.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-outline-primary me-2">Add to Cart</a>
               <a href="product.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Details</a>
             </div>
@@ -119,12 +129,10 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
 <footer class="bg-dark text-white text-center text-lg-start mt-5">
   <div class="container p-4">
     <div class="row">
-
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
         <h5 class="text-uppercase">Bazzar</h5>
         <p>Your trusted local online shopping platform for clothes, gadgets, and more.</p>
       </div>
-
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h5 class="text-uppercase">Quick Links</h5>
         <ul class="list-unstyled mb-0">
@@ -134,9 +142,6 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
           <li><a href="profile.php" class="text-white">Profile</a></li>
         </ul>
       </div>
-
-     
-
     </div>
   </div>
   <div class="text-center p-3 bg-secondary">
@@ -144,7 +149,6 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
