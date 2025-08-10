@@ -28,10 +28,13 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
       justify-content: space-between;
     }
     .product-card img {
-      height: 90%;
-      max-height: 250px;
-      object-fit: cover;
-      width: 100%;
+  height: 250px;
+  width: 100%;
+  object-fit: contain; /* show entire image */
+  background-color: #fff; /* add background for empty space */
+  padding: 5px; /* small padding around */
+}
+
     }
     .product-info {
       background-color: rgb(243, 230, 230);
