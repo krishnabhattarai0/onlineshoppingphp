@@ -26,7 +26,13 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 1s ease, box-shadow 0s ease; /* slower, smooth */
     }
+.product-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* bigger shadow */
+  transform: translateY(-2px); /* slight lift effect */
+}
+
     .product-card img {
   height: 250px;
   width: 100%;
