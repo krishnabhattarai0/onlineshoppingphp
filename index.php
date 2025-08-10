@@ -103,7 +103,7 @@ $categories = $conn->query("SELECT DISTINCT category FROM products");
     <?php if ($products->num_rows > 0): ?>
       <?php while ($row = $products->fetch_assoc()): ?>
         <div class="col">
-          <div class="card shadow-sm text-center product-card">
+          <div class="card shadow-sm text-center product-card" style="padding-bottom: 10px;">
             <img src="<?php echo $row['image']; ?>" alt="Product Image">
             <div class="product-info">
               <h5 class="card-title mb-1"><?php echo ucfirst($row['name']); ?></h5>
